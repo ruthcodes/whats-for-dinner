@@ -1,0 +1,23 @@
+form{
+  text-align: center;
+}
+
+#formInputs{
+  margin: 50px;
+}
+
+.ingList{
+  text-align: center;
+}
+
+ul{
+  list-style: none;
+}
+
+.restrict{
+  margin: 10px;
+}
+
+#submitSearch{
+  text-align: center;
+}

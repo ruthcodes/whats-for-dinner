@@ -1,0 +1,65 @@
+<html>
+  <head>
+    <title>What's For Dinner</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.4/css/bootstrap.css">
+    <link rel="stylesheet" href="style.css">
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <form id="formInputs">
+          <label for="ingredients">Ingredients:</label>
+          <br>
+          <input type="text" name="ingredients" id="ingredients">
+          <br>
+          <label for="exclude">Ingredients to exclude:</label>
+          <br>
+          <input type="text" name="exclude" id="exclude">
+          <br>
+          <label for="restrictions">Restrictions:</label>
+          <br>
+          <label for="vegetarian">Vegetarian</label>
+          <input type="checkbox" name="restrictions" id="vegetarian" class="restrict">
+          <label for="vegetarian">Vegan</label>
+          <input type="checkbox" name="restrictions" id="vegan" class="restrict">
+          <label for="low-fat">Low Fat</label>
+          <input type="checkbox" name="restrictions" id="low-fat" class="restrict">
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 ingList">
+        <h2>Ingredients</h2>
+        <ul id="ingredientList"></ul>
+      </div>
+      <div class="col-md-6 ingList">
+        <h2>Exclusions</h2>
+        <ul id="exclusionList"></ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="excl">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12" id="submitSearch">
+        <button class="btn" onclick="submitSearch()">Search</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12" id="results">
+        <ul id="resultsList"></ul>
+      </div>
+    </div>
+  </div>
+</body>
