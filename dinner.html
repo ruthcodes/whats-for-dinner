@@ -3,6 +3,8 @@
     <title>What's For Dinner</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.4/css/bootstrap.css">
     <link rel="stylesheet" href="style.css">
 
@@ -14,15 +16,21 @@
 <body>
   <div class="container">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-sm-12 title">
+        <h1>What's For Dinner?</h1>
+        <p>Enter your preferences and let us choose your meal for you!</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
         <form id="formInputs">
           <label for="ingredients">Ingredients:</label>
           <br>
-          <input type="text" name="ingredients" id="ingredients">
+          <input type="text" name="ingredients" id="ingredients" class="textEnter">
           <br>
           <label for="exclude">Ingredients to exclude:</label>
           <br>
-          <input type="text" name="exclude" id="exclude">
+          <input type="text" name="exclude" id="exclude" class="textEnter">
           <br>
           <label for="restrictions">Restrictions:</label>
           <br>
@@ -36,28 +44,28 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-6 ingList">
+      <div class="col-sm-12" id="submitSearch">
+        <button class="btn btn-primary" onclick="submitSearch()">Search</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 ingList">
         <h2>Ingredients</h2>
         <ul id="ingredientList"></ul>
       </div>
-      <div class="col-md-6 ingList">
+      <div class="col-sm-6 ingList">
         <h2>Exclusions</h2>
         <ul id="exclusionList"></ul>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-sm-12">
         <div class="excl">
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-12" id="submitSearch">
-        <button class="btn" onclick="submitSearch()">Search</button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12" id="results">
+      <div class="col-sm-12" id="results">
         <ul id="resultsList"></ul>
       </div>
     </div>

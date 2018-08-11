@@ -1,6 +1,6 @@
 
-let apiKey = //your key
-let apiId = //your ID
+let apiKey = //your_key
+let apiId = //your_id
 
 document.addEventListener("DOMContentLoaded", function() {
 
@@ -51,7 +51,7 @@ function submitSearch(){
   let diet = '';
 
   if (vegetarian && vegan){
-    health = "&health=vegetarian,vegan"
+    health = "&health=vegetarian&health=vegan"
   } else if (vegetarian){
     health = "&health=vegetarian"
   } else if (vegan){
@@ -69,7 +69,7 @@ function submitSearch(){
   const request = async () => {
     const response = await fetch(query);
     const json = await response.json();
-    //console.log(json);
+    console.log(json);
 
     const resultsList = document.querySelector('#resultsList')
     //loop through json and create li for each result
@@ -78,13 +78,15 @@ function submitSearch(){
     for (var key in json) {
       if (json.hasOwnProperty(key) && key === "hits") {
           json[key].map(res => {
-            resultString += `<li><span class="res">${res.recipe.label}</span></li>`
-            //console.log(res.recipe.label)
+            resultString += `  <a href=${res.recipe.url} target="_blank"><figure class="res col-sm-6"><img src=${res.recipe.image} alt=${res.recipe.label}><figcaption>${res.recipe.label}</figcaption></figure></a>`
+            //console.log(res.recipe)
           })
           //console.log(key + " -> " + json[key]);
       }
       resultsList.innerHTML = resultString;
     }
+
+
 
     //append li to resultsList innerHTML
     //const insert = `<li><span class="res">${this.value}</span></li>`

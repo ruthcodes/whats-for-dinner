@@ -1,9 +1,45 @@
+html{
+  background: #d9a7c7;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #fffcdc, #d9a7c7);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #fffcdc, #d9a7c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+body{
+  font-family: 'Amatic SC', cursive;
+  background: #d9a7c7;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #fffcdc, #d9a7c7);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #fffcdc, #d9a7c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+h1{
+  font-size: 60px;
+}
+.title{
+  text-align: center;
+  margin-top: 20px;
+}
+
+p{
+  font-size: 25px;
+}
+
 form{
   text-align: center;
 }
 
 #formInputs{
-  margin: 50px;
+  margin: 10px;
+}
+
+label{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.textEnter{
+  margin: 5px;
+
 }
 
 .ingList{
@@ -12,6 +48,7 @@ form{
 
 ul{
   list-style: none;
+  padding: 0;
 }
 
 .restrict{
@@ -20,4 +57,32 @@ ul{
 
 #submitSearch{
   text-align: center;
+}
+
+figure{
+  text-align: center;
+  margin: 0 0 30;
+}
+
+#resultsList{
+  margin: 0;
+  text-align: center;
+}
+
+#results{
+  text-align: center;
+  margin-top: 25px;
+}
+
+img{
+  width: 240px;
+  height: 240px;
+  border-radius: 5px;
+}
+
+figcaption{
+  font-size: 20px;
+  opacity: 0.5px;
+  text-align: center;
+  margin: 0;
 }
