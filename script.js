@@ -19,8 +19,18 @@ document.addEventListener("DOMContentLoaded", function() {
     if(e.keyCode === 13){
       const html = `<li><span class="ingr">${this.value}</span></li>`
       if (this.name === "ingredients"){
+        const listI = document.getElementById("ingredientList")
+        let item = document.getElementById("noIng");
+        if (item){
+          listI.removeChild(item);
+        }
         ingredientList.innerHTML += html
       } else {
+        const listE = document.getElementById("exclusionList")
+        let item = document.getElementById("noExc");
+        if (item){
+          listE.removeChild(item);
+        }
         exclusionList.innerHTML += html
       }
       form.reset();
@@ -70,20 +80,30 @@ function submitSearch(){
     const response = await fetch(query);
     const json = await response.json();
     console.log(json);
-
+    let resultString = '';
     const resultsList = document.querySelector('#resultsList')
+    // if there are no results
+    if (json.hits.length === 0){
+      //add list item to results stating no results
+      resultString += "<li>Uh oh, couldn't find any matches. Please update your search criteria and try again.</li>"
+      resultsList.innerHTML = resultString;
+      document.querySelector('.res').scrollIntoView({ behavior: 'smooth', block: 'start' })
+      return;
+    }
+
     //loop through json and create li for each result
     //json.hits
-    let resultString = '';
+    //let resultString = '';
     for (var key in json) {
       if (json.hasOwnProperty(key) && key === "hits") {
           json[key].map(res => {
-            resultString += `  <a href=${res.recipe.url} target="_blank"><figure class="res col-sm-6"><img src=${res.recipe.image} alt=${res.recipe.label}><figcaption>${res.recipe.label}</figcaption></figure></a>`
+            resultString += `<a href=${res.recipe.url} target="_blank"><figure class="res col-sm-6"><img src=${res.recipe.image} alt=${res.recipe.label}><figcaption>${res.recipe.label}</figcaption></figure></a>`
             //console.log(res.recipe)
           })
           //console.log(key + " -> " + json[key]);
       }
       resultsList.innerHTML = resultString;
+      document.querySelector('.res').scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
 
 

@@ -7,9 +7,8 @@ html{
 body{
   font-family: 'Amatic SC', cursive;
   background: #d9a7c7;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #fffcdc, #d9a7c7);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #fffcdc, #d9a7c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+  background: -webkit-linear-gradient(to right, #fffcdc, #d9a7c7);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #fffcdc, #d9a7c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 h1{
@@ -57,11 +56,14 @@ ul{
 
 #submitSearch{
   text-align: center;
+  margin: auto;
+  margin-bottom: 25px;
 }
 
 figure{
   text-align: center;
   margin: 0 0 30;
+  transition: all .09s ease .02;
 }
 
 #resultsList{
@@ -80,9 +82,28 @@ img{
   border-radius: 5px;
 }
 
+figure:hover{
+  transform: scale(1.1);
+}
+
 figcaption{
-  font-size: 20px;
+  font-size: 17px;
   opacity: 0.5px;
   text-align: center;
   margin: 0;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+a:hover{
+  color: purple;
+  text-decoration: none;
+}
+
+button{
+  background-color: #5D3F6A;
+  color: white;
 }

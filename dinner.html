@@ -18,7 +18,7 @@
     <div class="row">
       <div class="col-sm-12 title">
         <h1>What's For Dinner?</h1>
-        <p>Enter your preferences and let us choose your meal for you!</p>
+        <p>Enter your preferences below to find new recipes</p>
       </div>
     </div>
     <div class="row">
@@ -45,17 +45,17 @@
     </div>
     <div class="row">
       <div class="col-sm-12" id="submitSearch">
-        <button class="btn btn-primary" onclick="submitSearch()">Search</button>
+        <button class="btn" onclick="submitSearch()">Search</button>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-6 ingList">
         <h2>Ingredients</h2>
-        <ul id="ingredientList"></ul>
+        <ul id="ingredientList"><li id="noIng">None</li></ul>
       </div>
       <div class="col-sm-6 ingList">
         <h2>Exclusions</h2>
-        <ul id="exclusionList"></ul>
+        <ul id="exclusionList"><li id="noExc">None</li></ul>
       </div>
     </div>
     <div class="row">
@@ -64,7 +64,7 @@
         </div>
       </div>
     </div>
-    <div class="row">
+    <div class="row res">
       <div class="col-sm-12" id="results">
         <ul id="resultsList"></ul>
       </div>
