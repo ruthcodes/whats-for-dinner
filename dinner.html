@@ -26,11 +26,11 @@
         <form id="formInputs">
           <label for="ingredients">Ingredients:</label>
           <br>
-          <input type="text" name="ingredients" id="ingredients" class="textEnter">
+          <input type="text" name="ingredients" id="ingredients" class="textEnter" maxlength=15 autocomplete="off"><Button type="button" id="addIngredient">Add</Button>
           <br>
           <label for="exclude">Ingredients to exclude:</label>
           <br>
-          <input type="text" name="exclude" id="exclude" class="textEnter">
+          <input type="text" name="exclude" id="exclude" class="textEnter" maxlength=15 autocomplete="off"><Button type="button" id="addExclusion">Add</Button>
           <br>
           <label for="restrictions">Restrictions:</label>
           <br>
@@ -45,7 +45,7 @@
     </div>
     <div class="row">
       <div class="col-sm-12" id="submitSearch">
-        <button class="btn" onclick="submitSearch()">Search</button>
+        <button type="button" class="btn" onclick="submitSearch()">Search</button>
       </div>
     </div>
     <div class="row">

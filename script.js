@@ -9,27 +9,29 @@ document.addEventListener("DOMContentLoaded", function() {
   const ingredientList = document.querySelector('#ingredientList')
   const exclusionList = document.querySelector('#exclusionList')
   const form = document.querySelector('#formInputs')
+  const addIngredient = document.querySelector('#addIngredient')
+  const addExclusion = document.querySelector('#addExclusion')
 
   ingredients.addEventListener('change', updateList)
-  ingredients.addEventListener('keyup', updateList)
   exclusions.addEventListener('change', updateList)
-  exclusions.addEventListener('keyup', updateList)
+
 
   function updateList(e){
-    if(e.keyCode === 13){
-      const html = `<li><span class="ingr">${this.value}</span></li>`
+    e.preventDefault()
+    if(this.value != ''){
+      //create html to be inserted based on submitted values
+      const html = `<li><span class="ingr">${this.value}<button class="btn btn-danger" onclick="deleteItem(this)">x</button></span></li>`
       if (this.name === "ingredients"){
-        const listI = document.getElementById("ingredientList")
         let item = document.getElementById("noIng");
+        // if the word none is displayed, remove it
         if (item){
-          listI.removeChild(item);
+          ingredientList.removeChild(item);
         }
         ingredientList.innerHTML += html
       } else {
-        const listE = document.getElementById("exclusionList")
         let item = document.getElementById("noExc");
         if (item){
-          listE.removeChild(item);
+          exclusionList.removeChild(item);
         }
         exclusionList.innerHTML += html
       }
@@ -39,19 +41,32 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 })
 
+function deleteItem(e){
+  // remove parent's parent of button (button -> span -> li)
+  e.parentNode.parentNode.remove()
+  //if all items have been deleted, add back in "none" li
+  if(document.getElementById('ingredientList').getElementsByTagName('li').length <= 0){
+    ingredientList.innerHTML += '<li id="noIng">None</li>'
+  }
+  if(document.getElementById('exclusionList').getElementsByTagName('li').length <= 0){
+    exclusionList.innerHTML += '<li id="noExc">None</li>'
+  }
+}
+
 function submitSearch(){
   //get ingredients from list
   let list = document.getElementById("ingredientList").getElementsByTagName("li");
   let ingredientsList = [];
 
   for (let item of list) {
-    ingredientsList.push(item.innerText)
+    //strip trailing 'x' from delete button attached to each li
+    ingredientsList.push(item.innerText.substring(0,item.innerText.length - 1))
   }
   //get exclusions from list
   let exc = document.getElementById("exclusionList").getElementsByTagName("li");
   let exclusionsList = [];
   for (let item of exc) {
-    exclusionsList.push(item.innerText)
+    exclusionsList.push(item.innerText.substring(0,item.innerText.length - 1))
   }
   //check for restrictions
   let vegetarian = document.getElementById('vegetarian').checked;
@@ -79,7 +94,6 @@ function submitSearch(){
   const request = async () => {
     const response = await fetch(query);
     const json = await response.json();
-    console.log(json);
     let resultString = '';
     const resultsList = document.querySelector('#resultsList')
     // if there are no results
@@ -90,29 +104,16 @@ function submitSearch(){
       document.querySelector('.res').scrollIntoView({ behavior: 'smooth', block: 'start' })
       return;
     }
-
-    //loop through json and create li for each result
-    //json.hits
-    //let resultString = '';
+    //create li for each result
     for (var key in json) {
       if (json.hasOwnProperty(key) && key === "hits") {
           json[key].map(res => {
             resultString += `<a href=${res.recipe.url} target="_blank"><figure class="res col-sm-6"><img src=${res.recipe.image} alt=${res.recipe.label}><figcaption>${res.recipe.label}</figcaption></figure></a>`
-            //console.log(res.recipe)
           })
-          //console.log(key + " -> " + json[key]);
       }
       resultsList.innerHTML = resultString;
       document.querySelector('.res').scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
-
-
-
-    //append li to resultsList innerHTML
-    //const insert = `<li><span class="res">${this.value}</span></li>`
-
   }
   request();
-
-
 }

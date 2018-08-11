@@ -31,6 +31,10 @@ form{
   margin: 10px;
 }
 
+input{
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
 label{
   font-size: 20px;
   font-weight: bold;
@@ -48,6 +52,10 @@ label{
 ul{
   list-style: none;
   padding: 0;
+}
+
+li{
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 .restrict{
@@ -106,4 +114,9 @@ a:hover{
 button{
   background-color: #5D3F6A;
   color: white;
+}
+
+.btn-danger{
+  margin: 14px !important;
+  font-size: 20px;
 }
