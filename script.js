@@ -99,16 +99,21 @@ function submitSearch(){
     // if there are no results
     if (json.hits.length === 0){
       //add list item to results stating no results
-      resultString += "<li>Uh oh, couldn't find any matches. Please update your search criteria and try again.</li>"
+      resultString += "<div>Uh oh, couldn't find any matches. Please update your search criteria and try again.</div>"
       resultsList.innerHTML = resultString;
       document.querySelector('.res').scrollIntoView({ behavior: 'smooth', block: 'start' })
       return;
     }
     //create li for each result
+    let counter = 0;
     for (var key in json) {
       if (json.hasOwnProperty(key) && key === "hits") {
           json[key].map(res => {
+            counter++;
             resultString += `<a href=${res.recipe.url} target="_blank"><figure class="res col-sm-6"><img src=${res.recipe.image} alt=${res.recipe.label}><figcaption>${res.recipe.label}</figcaption></figure></a>`
+            if(counter % 2 == 0){
+              resultString += "<div class='clearfix'></div>"
+            }
           })
       }
       resultsList.innerHTML = resultString;
